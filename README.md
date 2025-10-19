@@ -75,6 +75,12 @@ Please follow the steps carefully and read each command before executing.
 ```
 aws s3api create-bucket --bucket kops-abhi-storage --region us-east-1
 ```
+```
+above command works for us-east-1, aws treats this region as a special region with no restrictions, however when it was changed to ap-south-1, didnt work. changed as below
+
+aws s3api create-bucket     --bucket kops-achu     --region ap-south-1     --create-bucket-configuration LocationConstraint=ap-south-1
+
+```
 
 ### Create the cluster 
 
