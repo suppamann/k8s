@@ -62,6 +62,10 @@ sudo mv kops-linux-amd64 /usr/local/bin/kops
 3. IAMFullAccess
 4. AmazonVPCFullAccess
 
+Also needed these for the IAM role
+5. AmazonEventBridgeFullAccess
+6. AmazonSQSFullAccess
+
 ### Set up AWS CLI configuration on your EC2 Instance or Laptop.
 
 Run `aws configure`
@@ -86,6 +90,12 @@ aws s3api create-bucket     --bucket kops-achu     --region ap-south-1     --cre
 
 ```
 kops create cluster --name=demok8scluster.k8s.local --state=s3://kops-abhi-storage --zones=us-east-1a --node-count=1 --node-size=t2.micro --master-size=t2.micro  --master-volume-size=8 --node-volume-size=8
+```
+
+```
+kops create cluster --name=achuk8s.k8s.local --state=s3://kops-achu --zones=ap-south-1a --node-count=1 --node-size=t2.micro --control-plane-size=t2.micro  --control-plane-volume-size=8 --node-volume-size=8
+
+master-size, master-size-volume has been deprecated
 ```
 
 ### Important: Edit the configuration as there are multiple resources created which won't fall into the free tier.
